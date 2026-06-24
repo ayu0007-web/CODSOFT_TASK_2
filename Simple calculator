@@ -1,0 +1,56 @@
+def add(x, y):
+    """Return the sum of two numbers."""
+    return x + y
+
+def subtract(x, y):
+    """Return the difference of two numbers."""
+    return x - y
+
+def multiply(x, y):
+    """Return the product of two numbers."""
+    return x * y
+
+def divide(x, y):
+    """Return the quotient of two numbers, with division-by-zero protection."""
+    if y == 0:
+        return "Error: Division by zero is not allowed."
+    return x / y
+
+def calculator():
+    print("--- Simple Command-Line Calculator ---")
+    print("Available operations:")
+    print("+ : Addition")
+    print("- : Subtraction")
+    print("* : Multiplication")
+    print("/ : Division")
+    
+    # Step 1: Prompt the user for the operational choice
+    operation = input("\nEnter choice of operation (+, -, *, /): ").strip()
+    
+    # Validate the choice of operation before requesting numbers
+    if operation not in ['+', '-', '*', '/']:
+        print("Error: Invalid operation selected.")
+        return
+
+    # Step 2: Prompt the user to input two numbers
+    try:
+        num1 = float(input("Enter first number: "))
+        num2 = float(input("Enter second number: "))
+    except ValueError:
+        print("Error: Invalid input. Please enter numerical values.")
+        return
+
+    # Step 3: Perform calculation and display the final result
+    if operation == '+':
+        result = add(num1, num2)
+    elif operation == '-':
+        result = subtract(num1, num2)
+    elif operation == '*':
+        result = multiply(num1, num2)
+    elif operation == '/':
+        result = divide(num1, num2)
+
+    print(f"\nResult: {num1} {operation} {num2} = {result}")
+
+if __name__ == "__main__":
+    calculator()
